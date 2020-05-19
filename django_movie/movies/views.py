@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import Movie
+from .forms import ReviewsForm
 
 # Create your views here.
 """class MovieView(View):
@@ -19,4 +20,16 @@ class MovieDetailView(DetailView):
     """Полное описание Фильма"""
     model = Movie
     slug_field = "url"
+
+class AddReview(View):
+    """Отзывы"""
+    def post(self, request, pk):
+        form = ReviewsForm(request.POST)
+        movie = Movie.objects.get(id = pk)
+        if form.is_valid():
+            form = form.save(commit = False)
+            form.movie = movie
+            form.save()
+        return redirect(movie.get_absolute_url())
+
     
