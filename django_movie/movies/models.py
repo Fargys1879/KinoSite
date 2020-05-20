@@ -74,6 +74,10 @@ class Movie(models.Model):
     def get_absolute_url(self):
         return reverse("movie_detail", kwargs={ "slug" : self.url},)
 
+    """Метод для вызова списка отзывов прикрепленных к фильму фильтруя поле Parent = True """
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
+
 class MovieShot(models.Model):
     """Кадры из Фильмов"""
     
