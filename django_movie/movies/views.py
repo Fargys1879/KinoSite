@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Movie
+from .models import Movie, Category
 from .forms import ReviewsForm
 
 # Create your views here.
@@ -14,8 +14,8 @@ from .forms import ReviewsForm
 class MovieView(ListView):
     """Список Фильмов"""
     model = Movie
-    queryset = Movie.objects.filter(draft=False)  
-
+    queryset = Movie.objects.filter(draft=False) 
+    
 class MovieDetailView(DetailView):
     """Полное описание Фильма"""
     model = Movie
