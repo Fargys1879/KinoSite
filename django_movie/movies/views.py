@@ -13,6 +13,18 @@ from .forms import ReviewsForm, RatingForm
         movies = Movie.objects.all()
         return render(request,"movies/movies.html", {'movie_list' : movies})"""
 
+class Search(ListView):
+    """Поиск фильмов"""
+    paginate_by = 3
+
+    def get_queryset(self):
+        return Movie.objects.filter(name__icontains=self.request.GET.get("q"))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context
+
 class GenreYear:
     """Жанры и года выхода фильмов"""
     def get_genres(self):
