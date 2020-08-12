@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!h3sw$d8*-f@^$$7$t&wuw_&&r*+vvk4l%-@jbn!bqr1@&c%ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False 
 
 ALLOWED_HOSTS = [heroku.com]
 
@@ -243,7 +243,10 @@ RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_SCORE_THRESHOLD = 0.5
 
 SITE_ID = 1
+<<<<<<< HEAD
 
 #CELERY
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
+=======
+>>>>>>> ea769cefbe0e913a1c8e6d146b990d385226de52
